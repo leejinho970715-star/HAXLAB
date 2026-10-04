@@ -2,7 +2,7 @@ import { mkdir,readFile,writeFile,copyFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 const origin='https://leejinho970715-star.github.io/HAXLAB';
-const moduleNames=['app.js','core.js','library.js','config.js','typer.js'];
+const moduleNames=['app.js','core.js','library.js','config.js','typer.js','intro.js'];
 const sourceFiles=await Promise.all([...moduleNames,'style.css','index.html'].map(name=>readFile('src/'+name,'utf8')));
 const version=createHash('sha256').update(sourceFiles.join('\n')).digest('hex').slice(0,12);
 const dir=resolve('dist/client');await mkdir(dir,{recursive:true});
@@ -16,6 +16,11 @@ for(const name of ['index.html','style.css',...moduleNames,'favicon.svg','anonym
  }else await copyFile('src/'+name,resolve(dir,name));
 }
 await mkdir(resolve(dir,'icons'),{recursive:true});for(const name of ['virus','wannacry','worm','trojan','defender','clamav'])await copyFile('src/icons/'+name+'.png',resolve(dir,'icons/'+name+'.png'));
+for(const folder of ['fonts','vendor','sections']){
+ await mkdir(resolve(dir,folder),{recursive:true});
+ const names=folder==='fonts'?['PretendardVariable.woff2','ShareTechMono-Regular.ttf','Orbitron-Regular.ttf','Orbitron-Bold.ttf','Pretendard-LICENSE.txt','ShareTechMono-LICENSE.txt','Orbitron-LICENSE.txt']:folder==='sections'?['scan-core.png','web-workspace.png','defense-core.png','code-terminal.png']:['gsap.min.js','ScrollTrigger.min.js'];
+ for(const name of names)await copyFile('src/'+folder+'/'+name,resolve(dir,folder,name));
+}
 await writeFile(resolve(dir,'.nojekyll'),'');await copyFile(resolve(dir,'index.html'),resolve(dir,'404.html'));
 await mkdir('dist/server',{recursive:true});await copyFile('src/worker.mjs','dist/server/index.js');
 console.log('Built GitHub Pages frontend: dist/client');console.log('Built Worker API: dist/server/index.js');

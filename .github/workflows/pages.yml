@@ -31,6 +31,7 @@ jobs:
           node --check src/app.js
           node --check src/core.js
           node --check src/typer.js
+          node --check src/intro.js
           node --check src/worker.mjs
       - name: Verify security and simulation behavior
         working-directory: hexlab

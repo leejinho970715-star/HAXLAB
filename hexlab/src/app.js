@@ -10,7 +10,7 @@ const icon=name=>`<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${ico
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function decorate(){document.querySelectorAll('[data-icon]').forEach(el=>el.innerHTML=icon(el.dataset.icon));}
 let toastTimer;function toast(message){$('#toast').textContent=message;$('#toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('visible'),3500);}
-function openDialog(content,label='HEXLAB / INTELLIGENCE'){$('#dialog-content').innerHTML=content;$('#dialog-eyebrow').textContent=label;$('#detail-dialog').showModal();}
+function openDialog(content,label='HEXLAB / INTELLIGENCE'){$('#dialog-content').innerHTML=content;$('#dialog-eyebrow').textContent=label;$('#detail-dialog').showModal();$('#dialog-content').scrollTop=0;}
 $('#dialog-close').onclick=()=>$('#detail-dialog').close();$('#detail-dialog').onclick=e=>{if(e.target===$('#detail-dialog'))$('#detail-dialog').close();};
 const demoIssues=[
  {id:'runtime',severity:'critical',title:'Outdated PHP Version',description:'지원이 종료된 PHP 버전이 사용되고 있습니다.',evidence:'데모 응답: X-Powered-By: PHP/7.4.3',fix:'지원되는 PHP 버전으로 업그레이드하고 회귀 테스트를 수행하세요.'},

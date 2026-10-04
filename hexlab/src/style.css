@@ -165,8 +165,8 @@ footer{gap:18px;flex-wrap:wrap;font-family:var(--mono)}
 @media(max-width:760px){.experience-finale{padding:68px 18px 55px;margin-top:28px;background-image:linear-gradient(180deg,#03090666,#030906a3),url('./sections/finale-operations-room.png');background-position:72% center}.experience-finale h2{font-size:clamp(27px,7.8vw,34px)}.experience-finale>div{gap:10px}.experience-finale .tour-finale-caption{margin-top:35px;font-size:8px}}
 /* Shared control sizes: action buttons use one footprint throughout the app. */
 :root{--button-height:44px;--button-width:180px;--button-font-size:12px;--button-gap:8px}
-.app-shell :is(.primary-button,.outline-button,.text-link),.history-item button{display:inline-flex;align-items:center;justify-content:center;gap:var(--button-gap);width:var(--button-width);min-width:0;max-width:100%;height:var(--button-height);min-height:var(--button-height);padding:0 14px;flex:0 0 auto;border-radius:var(--radius);font:500 var(--button-font-size)/1.35 var(--sans);letter-spacing:0;white-space:normal;text-align:center}
-.app-shell :is(.primary-button,.outline-button,.text-link) .icon{display:block;width:16px;height:16px;flex:0 0 16px}
+:is(.app-shell,#detail-dialog) :is(.primary-button,.outline-button,.text-link),.history-item button{display:inline-flex;align-items:center;justify-content:center;gap:var(--button-gap);width:var(--button-width);min-width:0;max-width:100%;height:var(--button-height);min-height:var(--button-height);padding:0 14px;flex:0 0 auto;border-radius:var(--radius);font:500 var(--button-font-size)/1.35 var(--sans);letter-spacing:0;white-space:normal;text-align:center}
+:is(.app-shell,#detail-dialog) :is(.primary-button,.outline-button,.text-link) .icon{display:block;width:16px;height:16px;flex:0 0 16px}
 .app-shell .icon-button{width:var(--button-height);height:var(--button-height);min-width:var(--button-height);padding:0;flex:0 0 auto;border-radius:var(--radius)}
 .app-shell .icon-button .icon{width:18px;height:18px}
 .nav-item,.subnav button{min-height:var(--button-height)}
@@ -184,3 +184,13 @@ footer{gap:18px;flex-wrap:wrap;font-family:var(--mono)}
 .model-card-bottom{gap:10px;justify-content:center}.bio-actions{justify-content:center}
 .typer-actions{display:flex;align-items:center;gap:8px}
 @media(max-width:760px){.input-panel{flex-wrap:wrap}.input-panel .input-wrap{flex-basis:100%}.input-panel>.primary-button{margin-left:auto}.template-actions{justify-content:center}.template-actions>span{width:100%;text-align:center}.app-shell .template-actions .outline-button{flex:0 0 auto}.experience-nav button{flex:1;padding-inline:4px;font-size:9px;gap:4px}.experience-finale>div{gap:12px}.typer-panel .panel-header{align-items:flex-start}.typer-actions{margin-left:auto}.typer-hints .outline-button{align-self:flex-end}.sandbox-panel .reset-button{grid-column:1/-1;grid-row:auto;margin:12px auto}.model-card-bottom{align-items:center}}
+/* Keep fixed menus and modal content reachable on small viewports. */
+.sidebar{height:100vh;height:100dvh;max-height:100vh;max-height:100dvh;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#31674b transparent}
+.sidebar>*{flex-shrink:0}
+#detail-dialog{max-height:calc(100vh - 32px);max-height:min(85dvh,calc(100dvh - 32px));overflow:hidden;overscroll-behavior:contain}
+#detail-dialog[open]{display:flex;flex-direction:column}
+#detail-dialog .dialog-top{flex:0 0 auto;gap:12px;background:#09160fed}
+#dialog-content{flex:1 1 auto;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#31674b transparent;overflow-wrap:anywhere}
+#detail-dialog #dialog-close{display:inline-flex;align-items:center;justify-content:center;width:var(--button-height);height:var(--button-height);min-width:var(--button-height);flex:0 0 auto;padding:0}
+.expanded-panel{min-height:0;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+@media(max-width:760px){#detail-dialog .dialog-top{padding:10px 16px}#dialog-content{padding:20px 18px}.expanded-panel{max-height:calc(100vh - 80px);max-height:calc(100dvh - 80px)}}

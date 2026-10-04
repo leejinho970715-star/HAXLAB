@@ -1,8 +1,8 @@
-import { MODEL_LIBRARY } from './library.js?v=aae76261284c';
-import { MALWARE_PRESETS,createVirtualFiles,infectFiles,scanVirtualFiles,restoreVirtualFiles,inspectCode,validateVirus,validateRules } from './core.js?v=aae76261284c';
-import { API_BASE } from './config.js?v=aae76261284c';
-import { mountTypingBoard } from './typer.js?v=aae76261284c';
-import { renderIntroDetails,mountIntroMotion } from './intro.js?v=aae76261284c';
+import { MODEL_LIBRARY } from './library.js?v=da4d63b495f7';
+import { MALWARE_PRESETS,createVirtualFiles,infectFiles,scanVirtualFiles,restoreVirtualFiles,inspectCode,validateVirus,validateRules } from './core.js?v=da4d63b495f7';
+import { API_BASE } from './config.js?v=da4d63b495f7';
+import { mountTypingBoard } from './typer.js?v=da4d63b495f7';
+import { renderIntroDetails,mountIntroMotion } from './intro.js?v=da4d63b495f7';
 const apiBase=location.hostname==='127.0.0.1'||location.hostname==='localhost'?'':API_BASE;
 const $=(s,root=document)=>root.querySelector(s);
 const icons={scan:'<path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"/><circle cx="12" cy="11" r="4"/><path d="m15 14 4 4"/>',terminal:'<rect x="3" y="4" width="18" height="16" rx="1"/><path d="m7 9 3 3-3 3m6 0h4"/>',file:'<path d="M14 3H5v18h14V8l-5-5v5h5M8 12h8m-8 4h6"/>',book:'<path d="M12 5c-3-2-7-2-10-1v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-3-1-7-1-10 1v15"/>',flag:'<path d="M5 21V3m0 1c5-4 9 4 14 0v10c-5 4-9-4-14 0"/>',external:'<path d="M14 3h7v7m0-7L10 14M10 3H3v18h18v-7"/>',menu:'<path d="M3 6h18M3 12h18M3 18h18"/>',link:'<path d="m10 14 4-4M8 16l-1 1a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0m0 12a4 4 0 0 1 0-6l5-5a4 4 0 0 1 6 6l-1 1"/>',shield:'<path d="m12 2 8 4v7c0 5-8 9-8 9s-8-4-8-9V6l8-4"/><path d="m8 12 3 3 5-6"/>',arrow:'<path d="M5 12h14m-5-5 5 5-5 5"/>',chevron:'<path d="m9 5 7 7-7 7"/>',check:'<path d="m5 12 4 4L19 6"/>',download:'<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',activity:'<path d="M2 12h4l3-8 6 16 3-8h4"/>',code:'<path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/>',globe:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 7h14M5 17h14"/>',play:'<path d="m7 4 14 8-14 8V4"/>',refresh:'<path d="M20 10a8 8 0 1 0-2 8M20 4v6h-6"/>',desktop:'<rect x="2" y="3" width="20" height="14" rx="1"/><path d="M12 17v4m-5 0h10"/>',mobile:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',expand:'<path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"/>',save:'<path d="M4 3h14l3 3v15H3V3h1M7 3v6h10V3M7 21v-8h10v8"/>',bug:'<path d="M8 9h8v7a4 4 0 0 1-8 0V9m2 0V6h4v3M5 6l3 3m8 0 3-3M3 12h5m8 0h5M4 19l4-3m8 0 4 3M12 9v10"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'};
@@ -10,7 +10,7 @@ const icon=name=>`<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${ico
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function decorate(){document.querySelectorAll('[data-icon]').forEach(el=>el.innerHTML=icon(el.dataset.icon));}
 let toastTimer;function toast(message){$('#toast').textContent=message;$('#toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('visible'),3500);}
-function openDialog(content,label='HEXLAB / INTELLIGENCE'){$('#dialog-content').innerHTML=content;$('#dialog-eyebrow').textContent=label;$('#detail-dialog').showModal();}
+function openDialog(content,label='HEXLAB / INTELLIGENCE'){$('#dialog-content').innerHTML=content;$('#dialog-eyebrow').textContent=label;$('#detail-dialog').showModal();$('#dialog-content').scrollTop=0;}
 $('#dialog-close').onclick=()=>$('#detail-dialog').close();$('#detail-dialog').onclick=e=>{if(e.target===$('#detail-dialog'))$('#detail-dialog').close();};
 const demoIssues=[
  {id:'runtime',severity:'critical',title:'Outdated PHP Version',description:'지원이 종료된 PHP 버전이 사용되고 있습니다.',evidence:'데모 응답: X-Powered-By: PHP/7.4.3',fix:'지원되는 PHP 버전으로 업그레이드하고 회귀 테스트를 수행하세요.'},

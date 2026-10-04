@@ -24,3 +24,13 @@ button,select,textarea,dialog,.panel,.input-panel,.input-wrap,.header-badge,.sid
 .code-tabs button,.console-tabs button,.lab-tab{border-radius:var(--radius)}
 .code-tabs,.console-tabs{gap:4px}
 .code-tabs button.active,.console-tabs button.active{box-shadow:inset 0 -1px var(--green)}
+
+/* Decorative code streams exist only while the intro is rendered. */
+.intro-mode .app-shell{isolation:isolate}
+.intro-code-rain{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;user-select:none;opacity:.58}
+.intro-code-rain::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 28% 42%,#050a08b8,transparent 72%),linear-gradient(0deg,#050a08b3,transparent 28%,transparent 80%,#050a0833)}
+.code-rain-stream{position:absolute;top:0;left:calc((var(--column) + .5)*100%/44);white-space:pre;font:500 14px/21px var(--mono);color:#22ed80;text-shadow:0 0 8px #18fa7977;mask-image:linear-gradient(transparent,#000 55%);animation:code-rain-fall var(--fall-duration) var(--fall-delay) linear infinite;will-change:transform}
+.code-rain-stream b{font-weight:600;color:#c5ffde;text-shadow:0 0 12px #44ff99}
+@keyframes code-rain-fall{from{transform:translateY(-100%)}to{transform:translateY(100vh)}}
+@media(max-width:760px){.code-rain-stream{font-size:12px;line-height:19px}.code-rain-stream:nth-child(even){display:none}.intro-code-rain{opacity:.45}}
+@media(prefers-reduced-motion:reduce){.intro-code-rain{display:none}}

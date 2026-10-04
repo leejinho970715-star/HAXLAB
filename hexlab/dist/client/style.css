@@ -34,3 +34,39 @@ button,select,textarea,dialog,.panel,.input-panel,.input-wrap,.header-badge,.sid
 @keyframes code-rain-fall{from{transform:translateY(-100%)}to{transform:translateY(100vh)}}
 @media(max-width:760px){.code-rain-stream{font-size:12px;line-height:19px}.code-rain-stream:nth-child(even){display:none}.intro-code-rain{opacity:.45}}
 @media(prefers-reduced-motion:reduce){.intro-code-rain{display:none}}
+
+/* Frosted glass surfaces retain the terminal palette and shared 10px corners. */
+body{background-image:radial-gradient(ellipse at 75% 12%,#1a6e4524,transparent 55%),radial-gradient(ellipse at 12% 85%,#11725718,transparent 45%),radial-gradient(#17452b44 .6px,transparent .6px);background-size:100% 100%,100% 100%,5px 5px;background-attachment:fixed}
+.panel,.input-panel,.intro-card,.model-card,.model-card.defense,.sidebar-mission,.header-badge,.bio-notice,dialog,.toast{background:linear-gradient(135deg,#21483145,#08130ca8);border-color:#80ecab30;-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);box-shadow:inset 0 1px 0 #ceffe512,inset 0 -1px 0 #38f89906,0 12px 35px #00000024}
+.panel-header{background:#bbffd004;border-color:#95e8b515}
+.intro-card:hover{background:linear-gradient(135deg,#2d805851,#0b24169e);box-shadow:inset 0 1px 0 #ceffe523,0 10px 32px #38f89915}
+.intro-card p,.model-card>p{color:#9cbaa6}
+.input-wrap,.sandbox-address,.console-prompt{background:#020a0559;border-color:#9be2b42b}
+.guide-caption{background:#081a0f66;border:1px solid #80ecab30;padding:13px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 #ceffe510}
+.intro-cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+.intro-card p br{display:none}
+.intro-card{display:flex;flex-direction:column}
+.intro-card p{flex:1}
+.intro-card-bottom{font-size:8px;letter-spacing:.4px}
+.typer-actions{display:flex;align-items:center;gap:11px}
+.typer-toolbar{display:flex;align-items:center;gap:24px;padding:13px 18px;border-bottom:1px solid var(--line-soft);background:#0e281330}
+.typer-toolbar label{display:flex;align-items:center;gap:10px;font-size:9px;color:#7da98b;letter-spacing:.5px}
+.typer-toolbar select{background:#05110980;color:#bce2cb;border:1px solid #417a5459;padding:6px 10px;font-size:11px;max-width:150px}
+.typer-session{margin-left:auto;font-size:9px;color:#648b71;letter-spacing:1px}
+.typer-surface{position:relative;height:clamp(360px,56vh,580px);overflow:hidden;background:linear-gradient(145deg,#04150a80,#010a04b3);transition:box-shadow .2s}
+.typer-surface::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,#02100818 4px)}
+.typer-surface.typing-focus{box-shadow:inset 0 0 50px #27fa7310}
+.typer-code{margin:0;padding:25px 27px;height:100%;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2;font:13px/1.85 var(--mono);color:#55ffa0;text-shadow:0 0 9px #28ff7a40;scrollbar-color:#24663e transparent;scrollbar-width:thin}
+.typer-cursor{color:#baffd4;animation:cursor 1.2s infinite;text-shadow:0 0 10px #4aff9e}
+#typer-capture{position:absolute;inset:0;width:100%;height:100%;padding:25px 27px;border:0;background:transparent;color:transparent;caret-color:transparent;resize:none;outline:none;box-shadow:none;opacity:.01;font-size:16px;touch-action:pan-y}
+.typer-hints{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:18px}
+.typer-hints p{display:flex;align-items:center;gap:9px;font:11px/1.8 var(--sans);color:#97bba3;margin:0}
+.typer-hints .icon{color:var(--green);width:15px}
+.typer-note{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding-top:18px;margin-top:23px;color:#6c977a}
+.typer-note>span{font-size:9px;letter-spacing:1px;color:#4f9566}
+.typer-note p{font:10px/1.7 var(--sans);margin:0}
+.typer-panel.expanded-panel{display:flex;flex-direction:column;background:#05130ced}
+.typer-panel.expanded-panel .typer-surface{height:auto;flex:1;min-height:0}
+@supports not (backdrop-filter:blur(1px)){.panel,.intro-card,.model-card,.input-panel,.sidebar-mission,dialog,.toast{background:#0b1b12f5}}
+@media(max-width:1200px){.intro-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.intro-cards{grid-template-columns:1fr}.intro-card-bottom{font-size:9px}.typer-toolbar{gap:12px;flex-wrap:wrap;padding:12px}.typer-toolbar label{gap:6px;font-size:8px}.typer-session{display:none}.typer-actions{gap:6px}.typer-actions .outline-button{font-size:9px;padding:6px 8px}.typer-surface{height:52vh;min-height:310px}.typer-code{padding:18px 15px;font-size:11px}.typer-hints{align-items:flex-start;flex-direction:column;gap:12px}.typer-hints p{font-size:10px}.typer-note{flex-direction:column;align-items:flex-start;gap:8px}.typer-note p{font-size:9px}.typer-toolbar select{font-size:10px;max-width:130px}}

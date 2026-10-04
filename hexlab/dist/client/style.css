@@ -157,3 +157,9 @@ footer{gap:18px;flex-wrap:wrap;font-family:var(--mono)}
 @media(max-width:1200px){.tour-scene{height:210px}}
 @media(max-width:760px){.tour-scene{height:220px}footer{justify-content:center;text-align:center;gap:9px;padding-block:18px}.footer-credit{display:block!important;width:100%;order:3;font-size:11px}}
 .experience-copy>.primary-button,.experience-finale button{transition:background .2s,color .2s,box-shadow .2s}
+/* Final invitation: generated operations-room backdrop with a clear central reading area. */
+.experience-finale{margin-top:42px;margin-bottom:24px;padding:100px 24px 80px;border:1px solid #6ceb9830;border-radius:10px;background-color:#030906;background-image:linear-gradient(180deg,#03090618,#03090640),url('./sections/finale-operations-room.png');background-size:cover;background-position:center;box-shadow:inset 0 1px 0 #b2ffc916,0 20px 65px #0004;overflow:hidden}
+.experience-finale h2{text-shadow:0 2px 24px #000b}
+.experience-finale p{color:#b4cdbd;text-shadow:0 1px 10px #000}
+.experience-finale .tour-finale-caption{color:#82aa91;text-shadow:0 1px 8px #000}
+@media(max-width:760px){.experience-finale{padding:68px 18px 55px;margin-top:28px;background-image:linear-gradient(180deg,#03090666,#030906a3),url('./sections/finale-operations-room.png');background-position:72% center}.experience-finale h2{font-size:clamp(27px,7.8vw,34px)}.experience-finale>div{gap:10px}.experience-finale .tour-finale-caption{margin-top:35px;font-size:8px}}

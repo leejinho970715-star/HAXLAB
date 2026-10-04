@@ -31,6 +31,11 @@
 
 - `code-terminal.png`: Create one premium 3D rendered hero illustration for a hacker education website, wide landscape 1536x1024 composition. A holographic smoked-glass terminal hovering above a compact dark mechanical keyboard, dense luminous green abstract code lines cascading around the screen, floating emerald glyphs. Cohesive black and neon mint green art direction, cinematic soft green rim lighting, detailed glass reflections, brushed metal, premium restrained product rendering. Object centered with generous negative space, almost pure black background seamlessly fading at all edges, no floor horizon, no humans, no branding, no readable words, no watermark. Real depth and rich material texture, elegant uncluttered composition. This is a symbolic educational visualization.
 
+## 마지막 CTA 배경
+
+- `src/sections/finale-operations-room.png`: 내장 `image_gen`으로 생성한 검정/에메랄드 3D 사이버 운영실 배경. footer 바로 위 섹션에 사용하며 중앙 여백과 CSS 오버레이로 문구 가독성을 확보합니다.
+- 최종 생성 프롬프트: Create a premium cinematic background image for the final call-to-action section of HEXLAB, a black and neon emerald green hacker education website. Extra wide landscape composition 1920x1024. An immersive futuristic cyber operations room, dark smoked glass server racks and subtle holographic data panels along the far left and far right edges, emerald green rim lighting, a faint luminous wireframe network globe at the far right, fine circuit traces across a reflective black floor, restrained haze and atmospheric depth. Keep the entire central 55 percent deliberately dark, spacious and free of objects so white Korean headline and green buttons can be overlaid with excellent legibility. The visual detail and lights should frame the center at the edges, soft black vignette fading all outer edges. Photorealistic polished 3D environment, elegant rather than cluttered, near-black charcoal materials, only mint/emerald accents. No people, no readable text, no typography, no logos, no watermark, no UI screenshot.
+
 ## 폰트와 모션
 
 - Pretendard Variable v1.3.9: 한국어 본문/UI, SIL Open Font License. 공식 저장소: https://github.com/orioncactus/pretendard

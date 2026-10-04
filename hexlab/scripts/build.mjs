@@ -18,7 +18,7 @@ for(const name of ['index.html','style.css',...moduleNames,'favicon.svg','anonym
 await mkdir(resolve(dir,'icons'),{recursive:true});for(const name of ['virus','wannacry','worm','trojan','defender','clamav'])await copyFile('src/icons/'+name+'.png',resolve(dir,'icons/'+name+'.png'));
 for(const folder of ['fonts','vendor','sections']){
  await mkdir(resolve(dir,folder),{recursive:true});
- const names=folder==='fonts'?['PretendardVariable.woff2','ShareTechMono-Regular.ttf','Orbitron-Regular.ttf','Orbitron-Bold.ttf','Pretendard-LICENSE.txt','ShareTechMono-LICENSE.txt','Orbitron-LICENSE.txt']:folder==='sections'?['scan-core.png','web-workspace.png','defense-core.png','code-terminal.png']:['gsap.min.js','ScrollTrigger.min.js'];
+ const names=folder==='fonts'?['PretendardVariable.woff2','ShareTechMono-Regular.ttf','Orbitron-Regular.ttf','Orbitron-Bold.ttf','Pretendard-LICENSE.txt','ShareTechMono-LICENSE.txt','Orbitron-LICENSE.txt']:folder==='sections'?['scan-core.png','web-workspace.png','defense-core.png','code-terminal.png','finale-operations-room.png']:['gsap.min.js','ScrollTrigger.min.js'];
  for(const name of names)await copyFile('src/'+folder+'/'+name,resolve(dir,folder,name));
 }
 await writeFile(resolve(dir,'.nojekyll'),'');await copyFile(resolve(dir,'index.html'),resolve(dir,'404.html'));

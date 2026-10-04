@@ -1,0 +1,4 @@
+api-deploy/
+.artifacts/
+node_modules/
+*.tar.gz

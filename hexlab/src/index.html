@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050a08">
+  <title>HEXLAB — 웹 보안 분석 & 모의해킹 실습</title>
+  <meta name="description" content="URL 보안 분석부터 격리된 웹 편집, 바이러스와 백신 시뮬레이션까지. 직접 실험하며 배우는 웹 보안 실험실 HEXLAB.">
+  <meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:site_name" content="HEXLAB">
+  <meta property="og:title" content="HEXLAB — Web Security Playground"><meta property="og:description" content="Scan. Simulate. Secure. 웹 보안을 분석하고, 가상 환경에서 직접 실험하세요.">
+  <meta property="og:image" content="__SITE_ORIGIN__/og.png"><meta property="og:url" content="__SITE_ORIGIN__/">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="HEXLAB — Web Security Playground"><meta name="twitter:description" content="Scan. Simulate. Secure. 웹 보안 분석과 모의해킹 실습."><meta name="twitter:image" content="__SITE_ORIGIN__/og.png">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="/" aria-label="HEXLAB 홈"><span class="brand-mark">⌘</span><span>HEX<span class="brand-white">LAB</span><small>WEB SECURITY PLAYGROUND</small></span></a>
+    <div class="workspace-label"><span class="signal-dot"></span> PERSONAL WORKSPACE <span class="version">v.1.0</span></div>
+    <div class="nav-label">WORKSPACE</div>
+    <nav aria-label="주 메뉴">
+      <a href="/" class="nav-item active" data-route="scan"><span data-icon="scan"></span>보안 분석<span class="nav-shortcut">01</span></a>
+      <a href="/lab" class="nav-item" data-route="lab"><span data-icon="terminal"></span>모의해킹 실습<span class="nav-shortcut">02</span></a>
+      <div class="subnav" hidden id="lab-subnav"><button data-lab-mode="web">웹 복제 & 편집</button><button data-lab-mode="bio">바이러스 & 백신<span class="tiny-tag">NEW</span></button></div>
+      <button class="nav-item" id="history-nav"><span data-icon="file"></span>분석 리포트<span class="count" id="report-count">01</span></button>
+    </nav>
+    <div class="nav-divider"></div><div class="nav-label">RESOURCES</div>
+    <button class="nav-item" id="guide-nav"><span data-icon="book"></span>보안 플레이북<span data-icon="external" class="end-icon"></span></button>
+    <button class="nav-item" id="mission-nav"><span data-icon="flag"></span>오늘의 미션<span class="tiny-tag">3</span></button>
+    <section class="sidebar-mission"><div class="small-heading">// TODAY'S MISSION</div><p>오늘도 한 단계 더 안전하게.</p><label><input type="checkbox" id="mission-scan"> 첫 번째 보안 분석 실행</label><label><input type="checkbox" id="mission-edit"> 샌드박스에서 코드 수정</label><label><input type="checkbox" id="mission-av"> 나만의 백신 규칙 만들기</label><div class="mission-track"><i id="mission-progress"></i></div><span id="mission-caption">0 / 3 COMPLETE</span></section>
+    <div class="sidebar-bottom"><div class="network-diagram" aria-hidden="true"><svg viewBox="0 0 180 150"><g fill="none" stroke="currentColor" stroke-width=".8"><circle cx="90" cy="72" r="58"/><ellipse cx="90" cy="72" rx="23" ry="58"/><ellipse cx="90" cy="72" rx="46" ry="58"/><ellipse cx="90" cy="72" rx="58" ry="22"/><ellipse cx="90" cy="72" rx="58" ry="43"/><path d="M32 72h116M90 14v116M44 38h92M44 106h92"/></g><g fill="currentColor"><circle cx="48" cy="45" r="3"/><circle cx="116" cy="106" r="3"/><circle cx="134" cy="72" r="3"/></g></svg><span>ISOLATED NETWORK</span></div><div class="sidebar-status"><span class="signal-dot"></span> ALL SYSTEMS OPERATIONAL</div><p>HACK THE RISKS. BUILD A SAFER WEB.</p></div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><button class="icon-button menu-toggle" id="menu-toggle" aria-label="메뉴 열기"><span data-icon="menu"></span></button><div class="breadcrumb">WORKSPACE <span>/</span> <strong id="breadcrumb-page">SECURITY SCAN</strong></div><div class="topbar-right"><svg class="waveform" viewBox="0 0 130 32" aria-hidden="true"><path d="M0 17h7l2-6 3 13 3-21 3 26 3-20 3 13 3-5h5l3-4 2 8 3-13 3 19 3-13 3 6h7l3-2 3 5 3-8 3 7 3-3h9l3-2 3 5 3-4h26" fill="none" stroke="currentColor"/></svg><span class="connection"><span class="signal-dot"></span> CONNECTION SECURE</span><span class="topbar-divider"></span><span class="avatar">H</span><span class="user-name">GUEST<small>LOCAL OPERATOR</small></span></div></header>
+    <main id="main-content"></main>
+    <footer><span>© 2026 HEXLAB <span class="footer-slash">/</span> PRACTICE. LEARN. SECURE.</span><span><span class="signal-dot"></span> SANDBOX READY <span class="footer-slash">/</span> <span id="local-time"></span></span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="detail-dialog"><div class="dialog-top"><span id="dialog-eyebrow">HEXLAB / INTELLIGENCE</span><button class="icon-button" id="dialog-close" aria-label="닫기">✕</button></div><div id="dialog-content"></div></dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

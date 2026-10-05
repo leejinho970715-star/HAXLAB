@@ -34,6 +34,10 @@ jobs:
           node --check src/intro.js
           node --check src/bgm.js
           node --check src/soundtracks.js
+          node --check src/report.js
+          node --check src/immersive.js
+          node --check src/frameworks.js
+          node --check src/tracking.js
           node --check server/api-proxy.mjs
           node --check src/worker.mjs
       - name: Verify security and simulation behavior

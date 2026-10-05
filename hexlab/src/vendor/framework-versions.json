@@ -1,0 +1,7 @@
+{
+  "react": "19.3.0",
+  "react-dom": "19.3.0",
+  "vue": "3.5.43",
+  "@babel/standalone": "7.29.9",
+  "fflate": "0.8.3"
+}

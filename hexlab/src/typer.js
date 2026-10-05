@@ -20,7 +20,7 @@ const streams={
  ]
 };
 
-export function mountTypingBoard(root){
+export function mountTypingBoard(root,onProgress=()=>{}){
  const capture=root.querySelector('#typer-capture');
  const output=root.querySelector('#typer-output');
  const surface=root.querySelector('.typer-surface');
@@ -29,6 +29,7 @@ export function mountTypingBoard(root){
  const state=root.querySelector('#typer-state');
  const format=root.querySelector('#typer-format');
  const speed=root.querySelector('#typer-speed');
+ const entryMode=root.querySelector('#typer-entry');
  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
  const lifecycle=new AbortController();
  const on=(element,event,fn)=>element.addEventListener(event,fn,{signal:lifecycle.signal});
@@ -38,6 +39,7 @@ export function mountTypingBoard(root){
   count.textContent=text.length.toLocaleString('ko-KR');
   scroller.scrollTop=scroller.scrollHeight;
   state.textContent=queue?'STREAMING':'READY';
+  onProgress({text,lines:text.split('\n').length,characters:text.length});
  }
  function step(){
   timer=0;if(disposed)return;
@@ -59,21 +61,23 @@ export function mountTypingBoard(root){
   if(!timer)step();
  }
  on(capture,'keydown',event=>{
+  if(entryMode?.value==='manual')return;
   if(event.ctrlKey||event.metaKey||event.altKey||event.isComposing||composing)return;
   if(event.key.length===1||['Enter','Backspace','Delete'].includes(event.key)){
    event.preventDefault();feed();
   }
  });
- on(capture,'beforeinput',event=>{if(event.isComposing||composing)return;event.preventDefault();feed();});
- on(capture,'input',()=>{if(!composing){capture.value='';feed();}});
+ on(capture,'beforeinput',event=>{if(entryMode?.value==='manual'||event.isComposing||composing)return;event.preventDefault();feed();});
+ on(capture,'input',()=>{if(!composing){if(entryMode?.value==='manual'){text=capture.value;draw();}else{capture.value='';feed();}}});
  on(capture,'compositionstart',()=>{composing=true;});
- on(capture,'compositionend',()=>{composing=false;capture.value='';feed();});
+ on(capture,'compositionend',()=>{composing=false;if(entryMode?.value==='manual'){text=capture.value;draw();}else{capture.value='';feed();}});
  on(capture,'focus',()=>surface.classList.add('typing-focus'));
  on(capture,'blur',()=>surface.classList.remove('typing-focus'));
- on(capture,'wheel',event=>{event.preventDefault();scroller.scrollTop+=event.deltaY;});
+ on(capture,'wheel',event=>{const canScroll=event.deltaY>0?scroller.scrollTop+scroller.clientHeight<scroller.scrollHeight-1:scroller.scrollTop>0;if(canScroll){event.preventDefault();scroller.scrollTop+=event.deltaY;}});
  on(root.querySelector('#typer-clear'),'click',()=>{clearTimeout(timer);timer=0;text=queue=remaining=lastSnippet='';capture.value='';draw();capture.focus({preventScroll:true});});
  on(root.querySelector('#typer-focus'),'click',()=>capture.focus({preventScroll:true}));
  on(format,'change',()=>{remaining='';});
+ if(entryMode)on(entryMode,'change',()=>{clearTimeout(timer);timer=0;queue=remaining=lastSnippet='';const manual=entryMode.value==='manual';capture.value=manual?text:'';surface.classList.toggle('manual-entry',manual);format.disabled=speed.disabled=manual;root.querySelector('#typer-help').textContent=manual?'직접 입력한 코드를 화면에 표시합니다. 8줄 이상 작성하면 지도가 켜지며 lat·lng 좌표 텍스트를 해석합니다. 코드는 실행하지 않습니다.':'빈 보드를 클릭하고 아무 키나 입력하세요. 실제 입력 대신 랜덤한 코드가 한 줄씩 채워집니다.';draw();capture.focus({preventScroll:true});});
  on(root.querySelector('#typer-expand'),'click',()=>{root.querySelector('.typer-panel').classList.toggle('expanded-panel');capture.focus({preventScroll:true});});
  capture.focus({preventScroll:true});
  return()=>{disposed=true;clearTimeout(timer);lifecycle.abort();};

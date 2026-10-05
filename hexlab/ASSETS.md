@@ -43,3 +43,10 @@
 - Share Tech Mono: 코드/터미널, SIL Open Font License. 공식 소스: https://github.com/google/fonts/tree/main/ofl/sharetechmono
 - 위 폰트는 로컬 호스팅하며 라이선스를 `src/fonts/`에 함께 보관합니다.
 - GSAP 3.15.0 및 ScrollTrigger: 공식 npm 패키지 dist 파일, 저작권 헤더 유지. https://gsap.com/standard-license 및 https://gsap.com/docs/v3/Plugins/ScrollTrigger/
+
+## 프레임워크 실습 런타임
+
+- React / React DOM 19.3.0, Vue 3.5.43, Babel Standalone 7.29.9, fflate 0.8.3: 공식 npm 패키지로부터 로컬 브라우저 런타임을 구성했습니다. 각 MIT 라이선스를 `src/vendor/`에 보관하며 버전은 `framework-versions.json`에 기록합니다.
+- Babel은 JSX·TypeScript를 변환하고, React와 Vue는 격리된 iframe 안에서 컴포넌트를 실행합니다. fflate는 실행 가능한 재구성 프로젝트의 ZIP 내보내기에 사용합니다.
+- 네온 도시 지도와 CCTV 장면은 `src/tracking.js`의 Canvas 코드로 직접 생성한 가상 3D 장면입니다. 외부 지도 타일·위치 추적·실제 CCTV 영상은 사용하지 않습니다.
+- 감염 체험 화면은 직접 작성한 가상 데스크톱 UI와 기존 운영실 배경을 사용합니다. 파일·잠금·격리·복원 상태는 가상 파일 모델의 실제 시뮬레이션 결과와 연결됩니다.

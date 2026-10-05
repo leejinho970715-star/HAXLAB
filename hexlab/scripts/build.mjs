@@ -1,9 +1,9 @@
-import { mkdir,readFile,writeFile,copyFile } from 'node:fs/promises';
+import { mkdir,readFile,writeFile,copyFile,readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 const isVercel=process.env.VERCEL==='1';
 const origin=(process.env.SITE_ORIGIN||(isVercel?'https://'+(process.env.VERCEL_PROJECT_PRODUCTION_URL||'haxlab-ten.vercel.app'):'https://leejinho970715-star.github.io/HAXLAB')).replace(/\/$/,'');
-const moduleNames=['app.js','core.js','library.js','config.js','typer.js','intro.js','bgm.js','soundtracks.js'];
+const moduleNames=['app.js','core.js','library.js','config.js','typer.js','intro.js','bgm.js','soundtracks.js','report.js','immersive.js','frameworks.js','tracking.js'];
 const sourceFiles=await Promise.all([...moduleNames,'style.css','index.html'].map(name=>readFile('src/'+name,'utf8')));
 const version=createHash('sha256').update(sourceFiles.join('\n')).digest('hex').slice(0,12);
 const dir=resolve('dist/client');await mkdir(dir,{recursive:true});
@@ -22,7 +22,7 @@ await mkdir(resolve(dir,'audio'),{recursive:true});
 for(const name of ['intro','scan','web','bio','code'])await copyFile('src/audio/'+name+'.wav',resolve(dir,'audio/'+name+'.wav'));
 for(const folder of ['fonts','vendor','sections']){
  await mkdir(resolve(dir,folder),{recursive:true});
- const names=folder==='fonts'?['PretendardVariable.woff2','ShareTechMono-Regular.ttf','Orbitron-Regular.ttf','Orbitron-Bold.ttf','Pretendard-LICENSE.txt','ShareTechMono-LICENSE.txt','Orbitron-LICENSE.txt']:folder==='sections'?['scan-core.png','web-workspace.png','defense-core.png','code-terminal.png','finale-operations-room.png']:['gsap.min.js','ScrollTrigger.min.js'];
+ const names=folder==='fonts'?['PretendardVariable.woff2','ShareTechMono-Regular.ttf','Orbitron-Regular.ttf','Orbitron-Bold.ttf','Pretendard-LICENSE.txt','ShareTechMono-LICENSE.txt','Orbitron-LICENSE.txt']:folder==='sections'?['scan-core.png','web-workspace.png','defense-core.png','code-terminal.png','finale-operations-room.png']:await readdir('src/vendor');
  for(const name of names)await copyFile('src/'+folder+'/'+name,resolve(dir,folder,name));
 }
 await writeFile(resolve(dir,'.nojekyll'),'');await copyFile(resolve(dir,'index.html'),resolve(dir,'404.html'));

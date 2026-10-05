@@ -27,6 +27,8 @@ npm run build
 
 ## 배포
 
+Vercel은 저장소 루트 또는 `hexlab`을 Root Directory로 사용할 수 있습니다. 각 위치의 `vercel.json`이 빌드 명령과 `dist/client` 출력 경로를 지정합니다. Vercel에서는 `/api/health`, `/api/scan`, `/api/clone` Node 함수를 통해 기존 공개 분석 서버로 요청을 전달합니다. 화면은 같은 출처의 API를 사용하며 다른 출처의 브라우저 요청은 프록시가 거부합니다. `/scan`, `/code`, `/lab/web`, `/lab/bio` 직접 접속도 지원합니다. 공유 이미지 주소는 Vercel 프로덕션 도메인으로 생성됩니다.
+
 `.github/workflows/pages.yml`이 main 브랜치의 변경을 검사·빌드하고 GitHub Pages로 배포합니다. 화면은 `hexlab/dist/client`이며 주소는 GitHub Pages 설정에서 확인하세요. `hexlab/src/config.js`의 API_BASE가 별도 HTTP API 서버를 지정합니다. API는 `hexlab/src/worker.mjs`이며 Cloudflare Workers 호환 ESM입니다. 같은 소스를 로컬 서버에서도 사용합니다.
 
 GitHub Pages 프로젝트 하위 경로를 지원하도록 상대 경로 자산과 해시 라우팅을 사용합니다. favicon, 생성된 Anonymous 안내 이미지, og:image 및 X 공유 메타데이터를 포함합니다. 공유 미리보기는 각 SNS가 자체 캐시·수집 정책으로 처리합니다.
@@ -51,3 +53,7 @@ API는 HTTP/HTTPS 기본 포트, 공개 도메인만 지원하며 각 리디렉�
 ## 이미지 제작
 
 OpenAI 내장 imagegen으로 생성했습니다. 프롬프트는 `hexlab/ASSETS.md`에 기록했습니다.
+
+## 배경음악
+
+인트로·보안 분석·웹 실습·백신 실험·코드 보드별 오리지널 전자음악 5곡을 사용합니다. 음원은 `hexlab/src/audio`의 로컬 WAV 파일이며 외부 음악 서비스에 의존하지 않습니다. `npm run compose:bgm`으로 동일한 음원을 다시 만들 수 있습니다. 첫 클릭·터치·키 입력 후 재생되며, 화면 우측 하단에서 음소거와 볼륨을 조절합니다. 설정은 이 브라우저에 저장됩니다. 페이지 전환 시 곡이 바뀌며 탭이 숨겨지면 일시 정지합니다.

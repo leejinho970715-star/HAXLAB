@@ -194,3 +194,13 @@ footer{gap:18px;flex-wrap:wrap;font-family:var(--mono)}
 #detail-dialog #dialog-close{display:inline-flex;align-items:center;justify-content:center;width:var(--button-height);height:var(--button-height);min-width:var(--button-height);flex:0 0 auto;padding:0}
 .expanded-panel{min-height:0;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
 @media(max-width:760px){#detail-dialog .dialog-top{padding:10px 16px}#dialog-content{padding:20px 18px}.expanded-panel{max-height:calc(100vh - 80px);max-height:calc(100dvh - 80px)}}
+/* A persistent music dock, with room below the footer for its controls. */
+.app-shell{padding-bottom:136px}
+.bgm-player{position:fixed;right:22px;bottom:18px;z-index:18;width:256px;padding:12px 14px;border:1px solid #4fde8a40;border-radius:10px;background:linear-gradient(130deg,#10291adb,#07130ee8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 8px 40px #0007,inset 0 1px 0 #d5ffe917;font-family:var(--mono)}
+.bgm-heading{display:flex;align-items:center;gap:8px}.bgm-heading strong{font-size:11px;letter-spacing:.7px;font-weight:400;color:#b4e2cc}.bgm-badge{margin-left:auto;font-size:8px;letter-spacing:1px;color:#669b7d}.bgm-indicator{width:6px;height:6px;border-radius:50%;background:#486553}
+.bgm-controls{display:flex;align-items:center;gap:14px;margin:9px 0 7px}.bgm-toggle{display:grid;place-items:center;width:44px;height:44px;flex:0 0 44px;border:1px solid #46956768;border-radius:10px;background:#0e281b;color:#7eefac;transition:background .2s}.bgm-toggle:hover{background:#18432c}.bgm-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.bgm-mute-mark{display:none}
+.bgm-player[data-state="muted"] .bgm-waves,.bgm-player[data-state="pending"] .bgm-waves{display:none}.bgm-player[data-state="muted"] .bgm-mute-mark,.bgm-player[data-state="pending"] .bgm-mute-mark{display:block}
+.bgm-player[data-state="playing"] .bgm-indicator{background:var(--green);box-shadow:0 0 10px #38f89999}
+.bgm-volume{flex:1;min-width:0}.bgm-volume label{display:flex;justify-content:space-between;font-size:9px;color:#6f9b80;letter-spacing:1px}.bgm-volume output{color:#a5d9b9;letter-spacing:0}.bgm-volume input{display:block;width:100%;height:24px;margin:0;accent-color:#38f899;cursor:pointer;touch-action:pan-y}
+.bgm-caption{display:flex;align-items:center;justify-content:space-between;gap:8px;font:9px var(--sans);color:#779d84}.bgm-status{font:8px var(--mono);color:#8ad7a9;white-space:nowrap}.toast{bottom:156px}
+@media(max-width:760px){.bgm-player{right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:244px}.app-shell{padding-bottom:calc(136px + env(safe-area-inset-bottom))}}

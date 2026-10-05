@@ -3,5 +3,5 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "scripts": { "dev": "node scripts/dev.mjs", "build": "node scripts/build.mjs", "test": "node --test scripts/core.test.mjs" }
+  "scripts": { "dev": "node scripts/dev.mjs", "build": "node scripts/build.mjs", "test": "node --test scripts/*.test.mjs", "compose:bgm": "node scripts/generate-bgm.mjs" }
 }

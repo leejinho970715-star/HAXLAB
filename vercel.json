@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "node --version",
+  "buildCommand": "npm --prefix hexlab run build",
+  "outputDirectory": "hexlab/dist/client",
+  "functions": { "api/[action].mjs": { "maxDuration": 60 } },
+  "rewrites": [
+    { "source": "/scan", "destination": "/index.html" },
+    { "source": "/code", "destination": "/index.html" },
+    { "source": "/lab", "destination": "/index.html" },
+    { "source": "/lab/:path*", "destination": "/index.html" }
+  ]
+}

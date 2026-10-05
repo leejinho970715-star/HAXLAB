@@ -32,7 +32,7 @@ export function mountImmersiveLab(root,actions){
   result=kind==='infect'?actions.infect():kind==='scan'?actions.scan():actions.restore();
   if(disposed)return;busy=false;
   if(result?.error){phase='ready';draw();root.querySelector('.incident-lesson').textContent=result.error;return;}
-  phase=kind==='scan'?'scan-complete':kind==='restore'?'restored':'compromised';draw();
+  phase=kind==='scan'?'scan-complete':kind==='restore'?'restored':'compromised';draw();return result;
  }
  root.addEventListener('click',event=>{
   const file=event.target.closest('[data-virtual-file]');if(file){focused=file.dataset.virtualFile;draw();return;}

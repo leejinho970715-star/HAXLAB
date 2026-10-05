@@ -3,6 +3,9 @@ import assert from 'node:assert/strict';
 import { explainReport,reportDocument,projectedScore,removeSavedReport,restoreSavedReports } from '../src/report.js';
 import { detectTechnology,projectFiles } from '../src/frameworks.js';
 import { codeCoordinate,trackingStep } from '../src/tracking.js';
+import { satellitePosition } from '../src/geo-views.js';
+import { libraryCode,parseLibraryCode } from '../src/library-code.js';
+import { infectFiles,scanVirtualFiles,restoreVirtualFiles,createVirtualFiles } from '../src/core.js';
 
 test('reports explain observed protections, prioritize weaknesses and keep unassessed areas explicit',()=>{
  const r={url:'https://example.com',finalUrl:'https://example.com',status:200,score:60,demo:false,issues:[{id:'csp',severity:'medium',title:'Missing CSP',description:'missing',fix:'set CSP',weight:15},{id:'cookie',severity:'high',title:'Cookie missing Secure',description:'missing',fix:'set Secure',weight:10}]};
@@ -40,4 +43,12 @@ test('exported React, Vue and Next projects include their actual entrypoints and
   if(mode==='next')assert.ok(files['app/layout.tsx'].includes('<html'));else assert.ok(files['vite.config.js'].includes('plugins'));
  }
  const vanilla=projectFiles({...base,mode:'vanilla'},versions);assert.ok(vanilla['index.html'].includes('src="script.js"'));
+});
+test('satellite projection wraps longitude and clamps polar coordinates safely',()=>{
+ const equator=satellitePosition(0,0,3);assert.equal(equator.x,4);assert.equal(equator.y,4);assert.equal(satellitePosition(0,360,3).x,4);assert.ok(Number.isFinite(satellitePosition(90,180,7).y));assert.equal(satellitePosition(0,0,99).level,18);
+});
+test('editable library code drives infection, detection and recovery of virtual files only',()=>{
+ const infection=parseLibraryCode(libraryCode('wannacry'),'wannacry');const infected=infectFiles(createVirtualFiles(),infection.config);assert.equal(infected.infected,3);assert.equal(infected.files.filter(f=>f.locked).length,3);
+ for(const key of ['clamav','defender']){const defense=parseLibraryCode(libraryCode(key),key);const scanned=scanVirtualFiles(infected.files,defense.rules);assert.equal(scanned.quarantined,3);assert.equal(defense.restoreBackup,true);assert.ok(restoreVirtualFiles(scanned.files).every(f=>!f.infected&&!f.locked));}
+ assert.throws(()=>parseLibraryCode('fetch("https://example.com")','virus'));assert.throws(()=>parseLibraryCode('lab.infect({"name":"x","marker":"DEMO","effect":"lock","spread":999})','virus'));assert.throws(()=>parseLibraryCode(libraryCode('clamav'),'virus'));
 });

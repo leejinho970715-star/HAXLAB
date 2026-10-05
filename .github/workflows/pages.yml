@@ -38,6 +38,10 @@ jobs:
           node --check src/immersive.js
           node --check src/frameworks.js
           node --check src/tracking.js
+          node --check src/welcome.js
+          node --check src/spider.js
+          node --check src/geo-views.js
+          node --check src/library-code.js
           node --check server/api-proxy.mjs
           node --check src/worker.mjs
       - name: Verify security and simulation behavior

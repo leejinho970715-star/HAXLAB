@@ -50,3 +50,10 @@
 - Babel은 JSX·TypeScript를 변환하고, React와 Vue는 격리된 iframe 안에서 컴포넌트를 실행합니다. fflate는 실행 가능한 재구성 프로젝트의 ZIP 내보내기에 사용합니다.
 - 네온 도시 지도와 CCTV 장면은 `src/tracking.js`의 Canvas 코드로 직접 생성한 가상 3D 장면입니다. 외부 지도 타일·위치 추적·실제 CCTV 영상은 사용하지 않습니다.
 - 감염 체험 화면은 직접 작성한 가상 데스크톱 UI와 기존 운영실 배경을 사용합니다. 파일·잠금·격리·복원 상태는 가상 파일 모델의 실제 시뮬레이션 결과와 연결됩니다.
+
+## 지도와 네온 거미
+
+- `src/maps/world-land.json`: Natural Earth 1:110m land GeoJSON을 공식 데이터 저장소에서 가져왔습니다. public domain. Source: https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_land.geojson · Terms: https://www.naturalearthdata.com/about/terms-of-use/
+- 위성 뷰는 Esri World Imagery 공개 타일 서비스에 직접 연결합니다. 영상은 실시간 CCTV가 아닌 공개 위성·항공 촬영 이미지이며, 지도에 서비스와 데이터 출처를 표시합니다. 2026-10-06 서비스 메타데이터의 credit: Source: Esri, Vantor, Earthstar Geographics, and the GIS User Community.
+- 2D 네온 거미, 관절 보행, 탐방 경로와 떨어지는 코드 조각은 `src/spider.js`에서 직접 작성했습니다. GrokBot의 캐릭터 모션 분위기를 참고한 독립적인 SVG 디자인이며 원본 코드·이미지를 복제하지 않았습니다.
+- 환영 화면은 기존 `anonymous.png`의 실사 가이드 이미지와 새 타이핑 대사를 사용합니다. 대사는 `src/welcome.js`에 보관하며 모션 감소 설정에서는 즉시 표시합니다.

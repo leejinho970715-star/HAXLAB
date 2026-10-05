@@ -1,4 +1,4 @@
-import { soundtrackFor } from './soundtracks.js?v=81701857cac4';
+import { soundtrackFor } from './soundtracks.js?v=8a57e8c9f31b';
 
 export function mountBackgroundMusic(root) {
   let saved = {};

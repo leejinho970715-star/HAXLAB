@@ -240,3 +240,6 @@ footer{gap:18px;flex-wrap:wrap;font-family:var(--mono)}
 @media(max-width:760px){.library-code-panel{padding:14px}#library-code-input{font-size:11px;padding:12px;height:275px}.library-code-actions{justify-content:flex-end}.library-sample-option{font-size:10px}}
 .tracking-zoom{top:12px;bottom:auto}.welcome-quick-entry{display:none}
 @media(max-width:760px){.welcome-top>span{display:none}.welcome-quick-entry{display:flex;align-items:center;justify-content:center;height:44px;width:150px;min-width:150px;border:1px solid #73d6945f;border-radius:10px;background:#0d2d1bb0;color:#b6f7cf;font:11px var(--sans)}}
+
+/* Keep encyclopedia source labels on one line within the shared button size. */
+#detail-dialog .library-source-link{white-space:nowrap;padding-inline:8px;font-size:11px}

@@ -1,4 +1,4 @@
-import { trackingStep } from './tracking.js?v=81701857cac4';
+import { trackingStep } from './tracking.js?v=8a57e8c9f31b';
 
 const FRAGMENTS=['trace(node);','scan_sector();','route.next();','checksum: OK','map.expand();','signal.lock();','[SIM] connected','verify(origin);','0x3F8A // trace','camera.switch();','await inspect();','defense.ready();'];
 

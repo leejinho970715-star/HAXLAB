@@ -1,4 +1,4 @@
-import { mountGeoViews } from './geo-views.js?v=8a57e8c9f31b';
+import { mountGeoViews } from './geo-views.js?v=f3fb86af5500';
 export function codeCoordinate(text){
  const latitude=text.match(/\b(?:lat|latitude)\s*["']?\s*[:=]\s*(-?\d+(?:\.\d+)?)/i);
  const longitude=text.match(/\b(?:lng|lon|longitude)\s*["']?\s*[:=]\s*(-?\d+(?:\.\d+)?)/i);

@@ -2,10 +2,12 @@ import { trackingStep } from './tracking.js';
 
 const FRAGMENTS=['trace(node);','scan_sector();','route.next();','checksum: OK','map.expand();','signal.lock();','[SIM] connected','verify(origin);','0x3F8A // trace','camera.switch();','await inspect();','defense.ready();'];
 
+export const NEON_SPIDER_SVG='<svg viewBox="-65 -60 130 120" fill="none" xmlns="http://www.w3.org/2000/svg"><g class="spider-legs">'+[-1,1].map(side=>Array.from({length:4},(_,i)=>'<path class="spider-leg" style="--leg-phase:'+((i+(side===1?1:0))%2)*-.22+'s" d="M '+side*10+' '+(-14+i*10)+' Q '+side*(25+i*3)+' '+(-33+i*20)+' '+side*(42+i*4)+' '+(-39+i*25)+' L '+side*(57-i*2)+' '+(-54+i*35)+'" />').join('')).join('')+'</g><ellipse cx="0" cy="14" rx="16" ry="24"/><ellipse cx="0" cy="-15" rx="11" ry="13"/><path d="M -6 -26 L -10 -34 M 6 -26 L 10 -34 M 0 -9 L 0 35 M -10 10 Q 0 17 10 10 M -12 24 Q 0 31 12 24"/><g class="spider-eyes"><circle cx="-4" cy="-19" r="1.4"/><circle cx="4" cy="-19" r="1.4"/></g></svg>';
+
 export function mountCodeSpider(root){
  const lifecycle=new AbortController(),reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const overlay=document.createElement('div');overlay.className='code-spider-overlay';overlay.hidden=true;overlay.setAttribute('aria-hidden','true');
- overlay.innerHTML='<div class="code-spider"><svg viewBox="-65 -60 130 120" fill="none" xmlns="http://www.w3.org/2000/svg"><g class="spider-legs">'+[-1,1].map(side=>Array.from({length:4},(_,i)=>'<path class="spider-leg" style="--leg-phase:'+((i+(side===1?1:0))%2)*-.22+'s" d="M '+side*10+' '+(-14+i*10)+' Q '+side*(25+i*3)+' '+(-33+i*20)+' '+side*(42+i*4)+' '+(-39+i*25)+' L '+side*(57-i*2)+' '+(-54+i*35)+'" />').join('')).join('')+'</g><ellipse cx="0" cy="14" rx="16" ry="24"/><ellipse cx="0" cy="-15" rx="11" ry="13"/><path d="M -6 -26 L -10 -34 M 6 -26 L 10 -34 M 0 -9 L 0 35 M -10 10 Q 0 17 10 10 M -12 24 Q 0 31 12 24"/><g class="spider-eyes"><circle cx="-4" cy="-19" r="1.4"/><circle cx="4" cy="-19" r="1.4"/></g></svg><span>CRAWLER_01</span></div>';
+ overlay.innerHTML='<div class="code-spider">'+NEON_SPIDER_SVG+'<span>CRAWLER_01</span></div>';
  document.body.append(overlay);
  const spider=overlay.querySelector('.code-spider'),toggle=document.createElement('button');toggle.type='button';toggle.className='outline-button spider-toggle';toggle.textContent='거미 모션 끄기';toggle.setAttribute('aria-pressed','true');toggle.hidden=true;
  root.querySelector('.typer-hints').append(toggle);

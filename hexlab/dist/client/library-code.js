@@ -1,4 +1,4 @@
-import { MALWARE_PRESETS,validateVirus,validateRules } from './core.js?v=233799fa9190';
+import { MALWARE_PRESETS,validateVirus,validateRules } from './core.js?v=505cdebe91a0';
 
 export function libraryCode(key){
  if(MALWARE_PRESETS[key]){

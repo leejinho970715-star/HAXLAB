@@ -1,4 +1,4 @@
-import {ATTACKS,DEFENDERS,newMatch,incomingKey,launchAttack,tapThreat,defendWave,nextRound} from './game-core.js?v=233799fa9190';
+import {ATTACKS,DEFENDERS,newMatch,incomingKey,launchAttack,tapThreat,defendWave,nextRound} from './game-core.js?v=505cdebe91a0';
 const asset=(key,alt='')=>`<img src="./icons/${key}.png" alt="${alt}">`;
 export function renderHackingGame(){
  return `<div class="page-heading"><div><div class="eyebrow">06 / RED TEAM × BLUE TEAM</div><h1><span class="terminal-chevron">&gt;</span>CYBER DUEL ARENA.</h1><p>보내고, 빼앗고, 막아내세요. 두 가상 컴퓨터 사이에서 펼쳐지는 6라운드 공방전.</p></div><div class="header-badge">BOT OPPONENT / VIRTUAL</div></div><div id="hacking-game"></div>`;

@@ -1,4 +1,4 @@
-import {createVirtualFiles,infectFiles,scanVirtualFiles,restoreVirtualFiles} from './core.js?v=233799fa9190';
+import {createVirtualFiles,infectFiles,scanVirtualFiles,restoreVirtualFiles} from './core.js?v=505cdebe91a0';
 export const MAIL_SCENARIOS = Object.freeze([
  {key:'invoice',virus:'wannacry',subject:'[긴급] 미확인 결제 내역을 확인하세요',sender:'Billing Center',address:'billing@invoice-alert.invalid',attachment:'Invoice_2026.pdf.exe',effect:'lock',hint:'문서처럼 보이는 이중 확장자와 급한 결제 안내',copy:'결제 내역이 첨부되었습니다. 지금 확인하지 않으면 이용이 제한됩니다.',spread:8},
  {key:'delivery',virus:'trojan',subject:'배송 주소 오류 · 수령 확인이 필요합니다',sender:'Parcel Support',address:'support@parcel-update.invalid',attachment:'Delivery_Details.exe',effect:'mark',hint:'예상하지 못한 배송 메일과 실행 파일 첨부',copy:'배송을 완료할 수 없습니다. 첨부 안내서를 열고 수령 정보를 확인하세요.',spread:6},

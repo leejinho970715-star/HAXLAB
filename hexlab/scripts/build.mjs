@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 const isVercel=process.env.VERCEL==='1';
 const origin=(process.env.SITE_ORIGIN||(isVercel?'https://'+(process.env.VERCEL_PROJECT_PRODUCTION_URL||'haxlab-ten.vercel.app'):'https://leejinho970715-star.github.io/HAXLAB')).replace(/\/$/,'');
-const moduleNames=['app.js','core.js','library.js','config.js','typer.js','intro.js','bgm.js','soundtracks.js','report.js','immersive.js','frameworks.js','tracking.js','welcome.js','spider.js','geo-views.js','library-code.js'];
+const moduleNames=['app.js','core.js','library.js','config.js','typer.js','intro.js','bgm.js','soundtracks.js','report.js','immersive.js','frameworks.js','tracking.js','welcome.js','spider.js','geo-views.js','library-code.js','mail-core.js','mail-experience.js','game-core.js','hacking-game.js'];
 const sourceFiles=await Promise.all([...moduleNames,'style.css','index.html'].map(name=>readFile('src/'+name,'utf8')));
 const version=createHash('sha256').update(sourceFiles.join('\n')).digest('hex').slice(0,12);
 const dir=resolve('dist/client');await mkdir(dir,{recursive:true});

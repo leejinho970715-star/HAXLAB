@@ -57,3 +57,9 @@
 - 위성 뷰는 Esri World Imagery 공개 타일 서비스에 직접 연결합니다. 영상은 실시간 CCTV가 아닌 공개 위성·항공 촬영 이미지이며, 지도에 서비스와 데이터 출처를 표시합니다. 2026-10-06 서비스 메타데이터의 credit: Source: Esri, Vantor, Earthstar Geographics, and the GIS User Community.
 - 2D 네온 거미, 관절 보행, 탐방 경로와 떨어지는 코드 조각은 `src/spider.js`에서 직접 작성했습니다. GrokBot의 캐릭터 모션 분위기를 참고한 독립적인 SVG 디자인이며 원본 코드·이미지를 복제하지 않았습니다.
 - 환영 화면은 기존 `anonymous.png`의 실사 가이드 이미지와 새 타이핑 대사를 사용합니다. 대사는 `src/welcome.js`에 보관하며 모션 감소 설정에서는 즉시 표시합니다.
+
+## 메일 체험과 게임 에셋
+
+- 새 메일·게임 콘텐츠는 기존 imagegen 창작 에셋 `icons/virus.png`, `worm.png`, `trojan.png`, `wannacry.png`, `clamav.png`, `defender.png`를 사용합니다. 실제 악성코드 실행 파일 또는 제품 공식 로고가 아닌 역할을 상징하는 3D 아이콘입니다.
+- 메일 경보는 직접 작성한 Web Audio 삼각파 사운드이며 외부 음원을 사용하지 않습니다. 붉은 경고 배경과 에셋 배회, 두 가상 컴퓨터·패킷 전송·백신 방어 모션은 CSS로 제작했습니다.
+- 새 인트로 소개 섹션은 기존 방어·터미널 배경 이미지와 바이러스·백신 아이콘을 조합하며 기존 GSAP ScrollTrigger 모션을 사용합니다.

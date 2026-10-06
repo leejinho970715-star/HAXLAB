@@ -5,4 +5,4 @@ export const SOUNDTRACKS={
  bio:{name:'DEFENSE MATRIX',file:'bio.wav',mood:'긴장감 있는 다크 앰비언트',bpm:80,roots:[38,34,43,45],arps:[0,3,7,10,15,10,7,3],rhythm:'defense'},
  code:{name:'TERMINAL DRIVE',file:'code.wav',mood:'몰입하는 사이버 테크노',bpm:118,roots:[40,38,36,47],arps:[0,7,12,7,3,14,7,12],rhythm:'drive'}
 };
-export function soundtrackFor(page,mode='web'){return SOUNDTRACKS[page==='lab'?mode:page]||SOUNDTRACKS.intro;}
+export function soundtrackFor(page,mode='web'){return SOUNDTRACKS[page==='lab'?mode:page==='mail'?'bio':page==='game'?'code':page]||SOUNDTRACKS.intro;}

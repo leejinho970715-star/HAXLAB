@@ -42,6 +42,10 @@ jobs:
           node --check src/spider.js
           node --check src/geo-views.js
           node --check src/library-code.js
+          node --check src/mail-core.js
+          node --check src/mail-experience.js
+          node --check src/game-core.js
+          node --check src/hacking-game.js
           node --check server/api-proxy.mjs
           node --check src/worker.mjs
       - name: Verify security and simulation behavior

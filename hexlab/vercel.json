@@ -4,11 +4,35 @@
   "installCommand": "node --version",
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
-  "functions": { "api/[action].mjs": { "maxDuration": 60 } },
+  "functions": {
+    "api/[action].mjs": {
+      "maxDuration": 60
+    }
+  },
   "rewrites": [
-    { "source": "/scan", "destination": "/index.html" },
-    { "source": "/code", "destination": "/index.html" },
-    { "source": "/lab", "destination": "/index.html" },
-    { "source": "/lab/:path*", "destination": "/index.html" }
+    {
+      "source": "/scan",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/code",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/mail",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/game",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/lab",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/lab/:path*",
+      "destination": "/index.html"
+    }
   ]
 }
